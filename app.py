@@ -4,6 +4,7 @@ import dash_labs as dl  # pip install dash-labs
 import dash_bootstrap_components as dbc # pip install dash-bootstrap-components
 from dash import html, html
 from dash_bootstrap_templates import ThemeSwitchAIO #pip install dash-bootstrap-templates
+from flask_caching import Cache
 # Code from: https://github.com/plotly/dash-labs/tree/main/docs/demos/multi_page_example1
 
 template_theme1 = "flatly"
@@ -18,6 +19,11 @@ app = dash.Dash(
     __name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 server=app.server
+
+cache = Cache(app.server, config={
+    'CACHE_TYPE': 'filesystem',
+    'CACHE_DIR': 'cache-directory'
+})
 
 navbar = dbc.Navbar(
     [

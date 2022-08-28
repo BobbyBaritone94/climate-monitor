@@ -234,8 +234,8 @@ def setup_pieCharts(startDate,endDate):
     Input('percentage','value')]
 )
 def mbfc_articles(startDate,endDate,chosenMbfc,percentage_selected):
-    df=dfMain[dfMain['uuid'].isin(zscoreDF['uuid'])]
-    df=df[(df['date_time'] > startDate) & (df['date_time'] < endDate)]
+    #df=dfMain[dfMain['uuid'].isin(zscoreDF['uuid'])]
+    df=dfMain[(dfMain['date_time'] > startDate) & (dfMain['date_time'] < endDate)]
     df=df[df['MBFC_category']==chosenMbfc]
     df = df.sort_values(by='fb_data.total_engagement_count',ascending=False)
     df = df.head(int((len(df)*(int(percentage_selected)/100))))
