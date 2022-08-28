@@ -7,3 +7,4 @@ numpy==1.22.3
 pandas==1.4.3
 plotly==5.8.0
 python-dotenv==0.20.0
+gunicorn==20.1.0
