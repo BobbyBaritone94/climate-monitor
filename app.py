@@ -17,6 +17,7 @@ dbc_css = (
 app = dash.Dash(
     __name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
+server=app.server
 
 navbar = dbc.Navbar(
     [
