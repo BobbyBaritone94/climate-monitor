@@ -2,4 +2,4 @@ FROM python:3.9-slim
 COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 COPY . ./
-CMD gunicorn -b 0.0.0.0:80 app:server --workers 4 --preload --timeout 600
+CMD gunicorn -b 0.0.0.0:80 app:server --workers 13 --preload --timeout 600
