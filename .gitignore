@@ -1,0 +1,10 @@
+/.env
+/env
+/cards_v2/cards_roberta_v2
+pages/__pycache__
+/cards_v2
+
+/test-model
+/notebooks
+.DS_Store
+/Portions
