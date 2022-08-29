@@ -509,7 +509,7 @@ layout = html.Div([
     html.Br(),
 
 #############
-#Select Cluster
+#Select Cluster 
 #############
 
     # html.Div([
