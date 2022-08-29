@@ -363,11 +363,11 @@ layout = html.Div([
         html.Div([html.H5("Date Range"),
         dcc.DatePickerRange(
             id='datePicker',
-            min_date_allowed = date(2017, 1, 1),
-            max_date_allowed = date(2022, 12, 30),
+            min_date_allowed = date(2022, 1, 1),
+            max_date_allowed = date(2022, 3, 1),
             display_format='M-D-Y',
-            start_date=date(2017,1,1),
-            end_date=date(2022,12,30),
+            start_date=date(2022,1,1),
+            end_date=date(2022,3,1),
             calendar_orientation='vertical'
         )],
         style={'width':'30%'}),
@@ -507,103 +507,108 @@ layout = html.Div([
     ]
     ),
     html.Br(),
-    html.Div([
-        html.Div([
-            html.H4('Find Relatated Topic'),
-            dcc.Input(id='search-topics',
-                type="text", 
-                placeholder="", 
-                value="biden",
-                debounce=True),
-        ],style={
-            'display':'flex',
-            'flexDirection':'column'
-        }),
-        dcc.Loading(
-            html.Div(id='output-topics',children=[],
-            style={
-                'display':'flex',
-                'flexDirection':'row',
-                'justifyContent':'space-between'
-            })
-        )
-    ],style={
-        'display':'flex',
-        'flexDirection':'row',
-        'justifyContent':'space-evenly'
-    }),
-    html.Br(),
-    html.Div([
+
+#############
+#Select Cluster
+#############
+
+    # html.Div([
+    #     html.Div([
+    #         html.H4('Find Relatated Topic'),
+    #         dcc.Input(id='search-topics',
+    #             type="text", 
+    #             placeholder="", 
+    #             value="biden",
+    #             debounce=True),
+    #     ],style={
+    #         'display':'flex',
+    #         'flexDirection':'column'
+    #     }),
+    #     dcc.Loading(
+    #         html.Div(id='output-topics',children=[],
+    #         style={
+    #             'display':'flex',
+    #             'flexDirection':'row',
+    #             'justifyContent':'space-between'
+    #         })
+    #     )
+    # ],style={
+    #     'display':'flex',
+    #     'flexDirection':'row',
+    #     'justifyContent':'space-evenly'
+    # }),
+    # html.Br(),
+    # html.Div([
 
         
-        html.H1("Select Cluster", style={'text-align' : 'right'}),
+    #     html.H1("Select Cluster", style={'text-align' : 'right'}),
         
           
-        dbc.Button(
-            "i",
-            id="collapse-button-3",
-            className="m-4",
-            #color="primary",
-            n_clicks=0,
-            style ={    
-                        'width':'25px',
-                        'height':'25px',
-                        'border-radius': '100%',
-                        'margin': ' -10px 10px 0 1000px',
-                        'padding': '0',
-                        'font-family': 'Cambria, Cochin, Georgia, Times, Times New Roman, serif',
-                        #'background-color' : 'rgba(255, 222, 173, 0)',
-                        # 'color':'black',
-                        # 'border': '1px solid black',
-                    }
-        ),
+    #     dbc.Button(
+    #         "i",
+    #         id="collapse-button-3",
+    #         className="m-4",
+    #         #color="primary",
+    #         n_clicks=0,
+    #         style ={    
+    #                     'width':'25px',
+    #                     'height':'25px',
+    #                     'border-radius': '100%',
+    #                     'margin': ' -10px 10px 0 1000px',
+    #                     'padding': '0',
+    #                     'font-family': 'Cambria, Cochin, Georgia, Times, Times New Roman, serif',
+    #                     #'background-color' : 'rgba(255, 222, 173, 0)',
+    #                     # 'color':'black',
+    #                     # 'border': '1px solid black',
+    #                 }
+    #     ),
         
-    ], style = { 
-        "display" : "flex",
-        "justifyContent": "center"
-        }
+    # ], style = { 
+    #     "display" : "flex",
+    #     "justifyContent": "center"
+    #     }
     
-    ),
-    dcc.Loading([
-        html.Div(id='cluster-info',
-        children=[
+    # ),
+    # dcc.Loading([
+    #     html.Div(id='cluster-info',
+    #     children=[
 
-        ])
-    ]),
+    #     ])
+    # ]),
 
-    html.Div([
-        html.Div([
-            html.Div([
-                html.H4('Select Cluster'),
-                dcc.Input(id='select-cluster',type="text", placeholder="", debounce=True),
-            ],style={
-                'display':'flex',
-                'flexDirection':'column'
-            }),
-            dcc.Graph(id='cluster-engagement',figure={},style={
-                'height':'80%'
-            })
-        ],style={
-            'display':'flex',
-            'flexDirection':'column',
-            'width':'45vw'
+    # html.Div([
+    #     html.Div([
+    #         html.Div([
+    #             html.H4('Select Cluster'),
+    #             dcc.Input(id='select-cluster',type="text", placeholder="", debounce=True),
+    #         ],style={
+    #             'display':'flex',
+    #             'flexDirection':'column'
+    #         }),
+    #         dcc.Graph(id='cluster-engagement',figure={},style={
+    #             'height':'80%'
+    #         })
+    #     ],style={
+    #         'display':'flex',
+    #         'flexDirection':'column',
+    #         'width':'45vw'
             
-        }),
-        dcc.Loading(
-        html.Div([
-            dcc.Graph(id='mbfc_engagement_fb',figure={}),
-            dcc.Graph(id='mbfc_engagement_tw',figure={})
-        ],style={
-        'display':'flex',
-        'flexDirection':'column',
-        'width':'45vw'
-        }))
+    #     }),
+    #     dcc.Loading(
+    #     html.Div([
+    #         dcc.Graph(id='mbfc_engagement_fb',figure={}),
+    #         dcc.Graph(id='mbfc_engagement_tw',figure={})
+    #     ],style={
+    #     'display':'flex',
+    #     'flexDirection':'column',
+    #     'width':'45vw'
+    #     }))
 
-    ],style={
-        'display':'flex',
-        'flexDirection':'row',
-        'justifyContent':'center'
-    }),
+    # ],style={
+    #     'display':'flex',
+    #     'flexDirection':'row',
+    #     'justifyContent':'center'
+    # }),
 
 
     html.Br(),
